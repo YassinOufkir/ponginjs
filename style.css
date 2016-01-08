@@ -1,0 +1,10 @@
+body {
+	background-color: white;
+}
+#comp, #player {
+	color: black;
+	font-size: 1.6em;
+	text-align: center;
+	font-family: sans-serif;
+	font-kerning: initial;
+}
