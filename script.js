@@ -2,7 +2,7 @@ $(document).ready(function() {
 var animate = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
     window.setTimeout(callback, 1000 / 60)
 };
-var canvas = document.createElement("canvas");
+var canvas = document.getElementById("canvas");
 var width = 1024;
 var height = 600;
 canvas.width = width;
@@ -21,6 +21,7 @@ var render = function () {
     player.render();
     computer.render();
     ball.render();
+    canvas.style.margin = "0 auto";
 };
 
 var update = function () {
@@ -152,8 +153,8 @@ Ball.prototype.update = function (paddle1, paddle2) {
     if (this.y < 0 || this.y > 600) {
         this.x_speed = 0;
         this.y_speed = 3;
-        this.x = 512;
-        this.y = 300;
+        this.x = Math.floor(Math.random()*1019);
+        this.y = 100;
     }
 
     if (top_y > 300) {
