@@ -1,7 +1,9 @@
-$(document).ready(function() { 
+$(document).ready(function() {
+    //locking the game to 60fps
 var animate = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
     window.setTimeout(callback, 1000 / 60)
 };
+//Vars
 var canvas = document.getElementById("canvas");
 var width = 1024;
 var height = 600;
@@ -14,16 +16,15 @@ var ball = new Ball(512, 300);
 var scorecomputer = 0;
 var scoreplayer = 0;
 var keysDown = {};
-
+//styling and rendering the stage
 var render = function () {
     context.fillStyle = "#000";
     context.fillRect(0, 0, width, height);
     player.render();
     computer.render();
     ball.render();
-    canvas.style.margin = "0 auto";
+    canvas.style.margin = "auto";
 };
-
 var update = function () {
     player.update();
     computer.update(ball);
@@ -35,7 +36,7 @@ var step = function () {
     render();
     animate(step);
 };
-
+//setting rules for the paddles
 function Paddle(x, y, width, height) {
     this.x = x;
     this.y = y;
@@ -44,12 +45,12 @@ function Paddle(x, y, width, height) {
     this.x_speed = 0;
     this.y_speed = 0;
 }
-
+//styling the paddles
 Paddle.prototype.render = function () {
     context.fillStyle = "#FFFFFF";
     context.fillRect(this.x, this.y, this.width, this.height);
 };
-
+// collision and moving
 Paddle.prototype.move = function (x, y) {
     this.x += x;
     this.y += y;
@@ -71,7 +72,8 @@ function Computer() {
 Computer.prototype.render = function () {
     this.paddle.render();
 };
-//AI
+//Computer
+//The computer has basicly a max speed. if the ball goes faster then the ai it will not exceed the max speed.
 Computer.prototype.update = function (ball) {
     var x_pos = ball.x;
     var diff = -((this.paddle.x + (this.paddle.width / 2)) - x_pos);
@@ -95,7 +97,7 @@ function Player() {
 Player.prototype.render = function () {
     this.paddle.render();
 };
-
+// with this we can move the player
 Player.prototype.update = function () {
     for (var key in keysDown) {
         var value = Number(key);
@@ -108,21 +110,21 @@ Player.prototype.update = function () {
         }
     }
 };
-
+//ball and it's speed
 function Ball(x, y) {
     this.x = x;
     this.y = y;
     this.x_speed = 0;
     this.y_speed = 3;
 }
-
+// creating te ball
 Ball.prototype.render = function () {
     context.beginPath();
     context.arc(this.x, this.y, 7, 2 * Math.PI, false);
     context.fillStyle = "#FFF";
     context.fill();
 };
-// Ball
+// Ball collision and stuff, and what to do when someone scores
 Ball.prototype.update = function (paddle1, paddle2) {
     this.x += this.x_speed;
     this.y += this.y_speed;
@@ -174,7 +176,7 @@ Ball.prototype.update = function (paddle1, paddle2) {
 
 document.body.appendChild(canvas);
 animate(step);
-
+//this flushes the array "keysDown" when no key is pressed.
 window.addEventListener("keydown", function (event) {
     keysDown[event.keyCode] = true;
 });
