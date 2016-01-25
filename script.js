@@ -16,6 +16,9 @@ var ball = new Ball(512, 300);
 var scorecomputer = 0;
 var scoreplayer = 0;
 var keysDown = {};
+//sounds
+var hitsound = new Audio('sound/hit.mp3');
+var score = new Audio('sound/score.mp3');
 //styling and rendering the stage
 var render = function () {
     context.fillStyle = "#000";
@@ -50,7 +53,7 @@ Paddle.prototype.render = function () {
     context.fillStyle = "#FFFFFF";
     context.fillRect(this.x, this.y, this.width, this.height);
 };
-// collision and moving
+//Paddle collision and moving
 Paddle.prototype.move = function (x, y) {
     this.x += x;
     this.y += y;
