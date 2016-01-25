@@ -2,7 +2,7 @@
 
 A simple pingpong game in js with jquery.
 
-You can play the game [here](https://raptorcloud.net/pongjs/).
+You can play the game [here](https://raptorcloud.net/school/periode2/sct/pongjs).
 
 Just use your left and right keys.
 
@@ -16,4 +16,3 @@ This game can be run locally without a special server or something. (just open i
 
  - Hitsound doesn't play, maybe need some codecs for it?
  - paddle sometimes hit the ball 3 times...
- -
