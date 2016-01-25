@@ -17,8 +17,7 @@ var scorecomputer = 0;
 var scoreplayer = 0;
 var keysDown = {};
 //sounds
-var hitsound = new Audio('sound/hit.mp3');
-var score = new Audio('sound/score.mp3');
+var hitsound = new Audio('hit.mp3');
 //styling and rendering the stage
 var render = function () {
     context.fillStyle = "#000";
@@ -167,12 +166,14 @@ Ball.prototype.update = function (paddle1, paddle2) {
             this.y_speed = -3;
             this.x_speed += (paddle1.x_speed / 2);
             this.y += this.y_speed;
+            hitsound.play();
         }
     } else {
         if (top_y < (paddle2.y + paddle2.height) && bottom_y > paddle2.y && top_x < (paddle2.x + paddle2.width) && bottom_x > paddle2.x) {
             this.y_speed = 3;
             this.x_speed += (paddle2.x_speed / 2);
             this.y += this.y_speed;
+            hitsound.play();
         }
     }
 };
