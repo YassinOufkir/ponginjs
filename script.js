@@ -17,7 +17,9 @@ var scorecomputer = 0;
 var scoreplayer = 0;
 var keysDown = {};
 //sounds
-var hitsound = new Audio('hit.mp3');
+//test
+var hitsound = new Audio('sound/hit.mp3');
+var playervictory = new Audio('sound/win.wav')
 //styling and rendering the stage
 var render = function () {
     context.fillStyle = "#000";
@@ -147,6 +149,7 @@ Ball.prototype.update = function (paddle1, paddle2) {
     if (this.y < 0) {
         scoreplayer += 1;
         $('#player').text(scoreplayer);
+        playervictory.play();
         
     }
     if (this.y > 600) {
