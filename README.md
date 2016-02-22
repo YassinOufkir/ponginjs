@@ -2,7 +2,7 @@
 
 A simple pingpong game in js with jquery.
 
-You can play the game [here](https://raptorcloud.net/school/periode2/sct/pongjs).
+You can play the game [here](https://raptorcloud.net/ponginjs).
 
 Just use your left and right keys.
 
