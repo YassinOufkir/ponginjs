@@ -14,5 +14,4 @@ This game can be run locally without a special server or something. (just open i
 
 ## Bugs ##
 
- - Hitsound doesn't play, maybe need some codecs for it?
- - paddle sometimes hit the ball 3 times...
+ - none
