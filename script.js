@@ -27,7 +27,6 @@ var render = function () {
     player.render();
     computer.render();
     ball.render();
-    canvas.style.margin = "auto";
 };
 var update = function () {
     player.update();
